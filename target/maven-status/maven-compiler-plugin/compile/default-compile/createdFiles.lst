@@ -1,0 +1,6 @@
+com\timeline\controllers\MainController.class
+com\timeline\dao\CatalogDao.class
+com\timeline\common\JsonResult.class
+com\timeline\dao\ResourcesDAO.class
+com\timeline\controllers\CalalogController.class
+com\timeline\services\CatalogService.class

@@ -11,6 +11,13 @@
       <servlet-class>
          org.springframework.web.servlet.DispatcherServlet
       </servlet-class>
+      <init-param>
+      		<!-- 定义了要装入的 Spring 配置文件  -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:spring*.xml
+			</param-value>
+	  </init-param>
       <!-- 容器启动的时候立即生成Servlet实例 -->
       <load-on-startup>1</load-on-startup>
    </servlet>

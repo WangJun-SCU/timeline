@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.timeline.common.JsonResult;
-import com.timeline.pojos.Catalog;
 import com.timeline.services.CatalogService;
+import com.timeline.vo.CatalogVO;
 
 @Controller
 @RequestMapping("/catalog")
@@ -22,10 +22,19 @@ public class CalalogController {
 	
 	@RequestMapping(value = "/addcatalog", method=RequestMethod.POST)
 	@ResponseBody
-	public JsonResult addCatalog(@RequestBody Catalog catalog) {
+	public JsonResult addCatalog(@RequestBody CatalogVO catalog) {
 		
-		catalogService.addCatalog(catalog);
-		jsonResult.setBody("目录插入成功");
+		System.out.println("controller-addCatalog-req：" + catalog.toString());
+		
+		try {
+			catalogService.addCatalog(catalog);
+			jsonResult.setBody("目录插入成功");
+		}catch(Exception e){
+			jsonResult.setCode(-1);
+			jsonResult.setMessage(e.getMessage());
+			return jsonResult;
+		}
+		
 		return jsonResult;
 	}
 }

@@ -1,4 +1,4 @@
-package com.timeline.pojos;
+package com.timeline.entity;
 
 import java.sql.Timestamp;
 

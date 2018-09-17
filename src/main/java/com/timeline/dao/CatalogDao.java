@@ -1,6 +1,6 @@
 package com.timeline.dao;
 
-import com.timeline.pojos.Catalog;
+import com.timeline.entity.Catalog;
 
 public interface CatalogDao {
 	

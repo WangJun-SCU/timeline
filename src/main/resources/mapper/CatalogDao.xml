@@ -5,7 +5,7 @@
   
 <mapper namespace="com.timeline.dao.CatalogDao">
 
-	<insert id="insertCatalog" parameterType="Catalog">
+	<insert id="insertCatalog" parameterType="com.timeline.pojos.Catalog">
 		INSERT INTO catalog ( name, location, time, desc, create_time, update_time )
 		VALUES
 			( #{name}, #{location}, #{time}, #{desc}, #{create_time}, #{update_time})
