@@ -16,6 +16,6 @@ public class CatalogVO {
 	private String name;
 	private String location;
 	private long time;
-	private String desc;
+	private String description;
 
 }

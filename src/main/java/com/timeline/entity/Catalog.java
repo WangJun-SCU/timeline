@@ -1,5 +1,6 @@
 package com.timeline.entity;
 
+
 import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ public class Catalog {
 	private String name;
 	private String location;
 	private Timestamp time;
-	private String desc;
+	private String description;
 	private Timestamp createTime;
 	private Timestamp updateTime;
 

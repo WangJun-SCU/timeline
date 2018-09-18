@@ -1,5 +1,7 @@
 package com.timeline.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +17,6 @@ import com.timeline.vo.CatalogVO;
 @RequestMapping("/catalog")
 public class CalalogController {
 	
-	JsonResult jsonResult = new JsonResult(0, "success");
-	
 	@Autowired
 	private CatalogService catalogService;
 	
@@ -24,16 +24,28 @@ public class CalalogController {
 	@ResponseBody
 	public JsonResult addCatalog(@RequestBody CatalogVO catalog) {
 		
-		System.out.println("controller-addCatalog-req：" + catalog.toString());
-		
+		System.out.println("controller-addCatalog-req:" + catalog.toString());
+		JsonResult jsonResult = new JsonResult(0, "success");
 		try {
 			catalogService.addCatalog(catalog);
 			jsonResult.setBody("目录插入成功");
+			System.out.println(jsonResult.getBody());
+			System.out.println("你好");
 		}catch(Exception e){
 			jsonResult.setCode(-1);
 			jsonResult.setMessage(e.getMessage());
 			return jsonResult;
 		}
+		
+		return jsonResult;
+	}
+	
+	@RequestMapping("/querycatalog")
+	@ResponseBody
+	public JsonResult queryCatalog() {
+		List<CatalogVO> list = catalogService.queryCatalog();
+		JsonResult jsonResult = new JsonResult(0, "success");
+		jsonResult.setBody(list);
 		
 		return jsonResult;
 	}

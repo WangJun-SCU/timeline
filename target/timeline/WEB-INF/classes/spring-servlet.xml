@@ -12,7 +12,7 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
        
    <mvc:annotation-driven>
-	   <mvc:message-converters>
+	   <mvc:message-converters register-defaults="true">
 	        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
 	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 	    </mvc:message-converters>
