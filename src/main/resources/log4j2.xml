@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出。 -->
+<Configuration status="WARN">
+	<!-- Properties：配置一些变量，可以再后面引用 -->
+	<Properties>
+		<Property name="business">../mylogs/business.log</Property>
+		<Property name="all">../mylogs/all.log</Property>
+	</Properties>
+
+	<!-- Appenders：配置日志输出的方式 -->
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<!-- append="false"表示每次重启容器会自动清空 -->
+		<File name="Business" fileName="${business}" append="true">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+		</File>
+		<File name="All" fileName="${all}" append="true">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+		</File>
+	</Appenders>
+
+	<!-- Loggers：配置日志输出策略，additivity="false"不会输出到root -->
+	<Loggers>
+		<Logger name="org.springframework.beans.factory" level="ERROR" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="com.timeline" level="DEBUG">
+			<AppenderRef ref="Business" />
+		</Logger>
+		<!-- 设置指定类的日志输出，如果设置级别为info，即使root的级别为error，指定类的info级别以上的仍能输出，相当于重写了root。 -->
+		<Root level="error">
+			<AppenderRef ref="All" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -2,6 +2,8 @@ package com.timeline.controllers;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,8 @@ import com.timeline.vo.CatalogVO;
 @RequestMapping("/catalog")
 public class CalalogController {
 	
+	private static final Logger logger = LogManager.getLogger(CalalogController.class);
+	
 	@Autowired
 	private CatalogService catalogService;
 	
@@ -24,13 +28,12 @@ public class CalalogController {
 	@ResponseBody
 	public JsonResult addCatalog(@RequestBody CatalogVO catalog) {
 		
-		System.out.println("controller-addCatalog-req:" + catalog.toString());
+		logger.debug("controller-addCatalog-req:" + catalog.toString());
+		
 		JsonResult jsonResult = new JsonResult(0, "success");
 		try {
 			catalogService.addCatalog(catalog);
 			jsonResult.setBody("目录插入成功");
-			System.out.println(jsonResult.getBody());
-			System.out.println("你好");
 		}catch(Exception e){
 			jsonResult.setCode(-1);
 			jsonResult.setMessage(e.getMessage());
