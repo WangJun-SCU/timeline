@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>时间线</title>
+    <link rel="shortcut icon" href="../common/imgs/timeline.png">
+    <link rel="icon" href="../common/imgs/timeline.png">
+    <link rel="stylesheet" type="text/css" media="all" href="../common/css/iview.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../common/css/base.css">
+    <link rel="stylesheet" type="text/css" media="all" href="./css/detail.css">
 </head>
+
 <body>
-<h2>时间线详情页面</h2>
+    <div id="vue">
+        <i-menu class="pl_100" mode="horizontal" theme="dark" active-name="1">
+            <menu-item name="1">
+                <Icon type="ios-paper"></Icon>
+                内容管理
+            </menu-item>
+            <menu-item name="2">
+                <Icon type="ios-people"></Icon> 用户管理
+            </menu-item>
+            <menu-item name="3">
+                <Icon type="ios-thunderstorm"></Icon> 综合设置
+            </menu-item>
+        </i-menu>
+        <div style="margin: 20px 120px 0px;">
+            <div class="title">
+                <h2>时间线详情页面</h2>
+                <i-button @click="drawerUpload = true" type="primary" class="upload_button">上传</i-button>
+            </div>
+        </div>
+        <!-- 上传组件的抽屉 -->
+        <Drawer title="上传" v-model="drawerUpload" width="50" closable="true">
+            <div>
+                上传目录：
+                <i-select v-model="uploadCatalog" style="width: 150px">
+                    <i-option v-for="item in catalogs" :value="item.id" :key="item.id">{{ item.name }}</i-option>
+                </i-select>
+            </div>
+            <upload type="drag" multiple :action="uploadUrl" class="mt_20" :accept="uploadType" :data="uploadData" :before-upload="beforeUpload">
+                <div style="padding: 20px 0">
+                    <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                    <p class="fz_14">点击或拖拽上传文件</p>
+                </div>
+            </upload>
+        </Drawer>
+    </div>
+    <script type="text/javascript" src="../common/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../common/js/vue.min.js"></script>
+    <script type="text/javascript" src="../common/js/iview.min.js"></script>
+    <script type="text/javascript" src="../common/js/host.js"></script>
+    <script type="text/javascript" src="../detail/js/detail.js"></script>
 </body>
+
 </html>

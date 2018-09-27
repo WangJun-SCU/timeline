@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.timeline.dao.ResourcesDao">
+
+	<insert id="addResource" parameterType="com.timeline.entity.Resources">
+		INSERT INTO resources ( url, type, catalog_id, create_time, update_time )
+		VALUES
+		( #{url}, #{type}, #{catalogId}, #{createTime}, #{updateTime})
+	</insert>
+	
+</mapper>

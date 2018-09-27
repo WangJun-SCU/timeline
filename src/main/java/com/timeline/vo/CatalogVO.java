@@ -13,6 +13,7 @@ import lombok.ToString;
 @Getter
 public class CatalogVO {
 
+	private int id;
 	private String name;
 	private String location;
 	private long time;

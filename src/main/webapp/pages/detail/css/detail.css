@@ -1,0 +1,9 @@
+.title {
+	position: relative;
+	width: 100%;
+}
+.upload_button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

@@ -18,15 +18,15 @@ public class CatalogService {
 	@Autowired
 	private CatalogDao catalogDao;
 
-	public void addCatalog(CatalogVO catalog) {
+	public void addCatalog(CatalogVO catalogVO) {
 
-		Timestamp time = Utils.long2Timestamp(catalog.getTime());
+		Timestamp time = Utils.long2Timestamp(catalogVO.getTime());
 		Timestamp createTime = Utils.long2Timestamp(System.currentTimeMillis());
 		Timestamp updateTime = createTime;
-		Catalog catalogVO = new Catalog(catalog.getName(), catalog.getLocation(), time, catalog.getDescription(), createTime,
+		Catalog catalog = new Catalog(catalogVO.getName(), catalogVO.getLocation(), time, catalogVO.getDescription(), createTime,
 				updateTime);
 
-		catalogDao.insertCatalog(catalogVO);
+		catalogDao.insertCatalog(catalog);
 	}
 
 	public List<CatalogVO> queryCatalog() {
@@ -34,7 +34,7 @@ public class CatalogService {
 		List<CatalogVO> resultList = new ArrayList<CatalogVO>();
 		for (int i = 0; i < list.size(); i++) {
 			Catalog catalogItem = list.get(i);
-			CatalogVO item = new CatalogVO(catalogItem.getName(), catalogItem.getLocation(),
+			CatalogVO item = new CatalogVO(catalogItem.getId(), catalogItem.getName(), catalogItem.getLocation(),
 					Utils.timestamp2Long(catalogItem.getTime()), catalogItem.getDescription());
 			
 			resultList.add(item);

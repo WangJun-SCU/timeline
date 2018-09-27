@@ -12,6 +12,7 @@
 	</insert>
 	
 	<resultMap id="catalog" type="com.timeline.entity.Catalog">
+		<result column="id" property="id"/>
 		<result column="name" property="name"/>
 		<result column="location" property="location"/>
 		<result column="time" property="time"/>
