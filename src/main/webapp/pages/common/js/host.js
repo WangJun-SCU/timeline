@@ -1,1 +1,2 @@
-var host="http://localhost:8080/timeline";
+var host="http://localhost:8080";
+

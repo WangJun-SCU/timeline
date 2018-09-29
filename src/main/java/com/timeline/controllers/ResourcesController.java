@@ -38,6 +38,7 @@ public class ResourcesController {
 	@ResponseBody
 	public JsonResult uploadResources(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
 		logger.debug("Entry");
+		String url = "";
 
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
 
@@ -59,7 +60,7 @@ public class ResourcesController {
 			}
 			String newFileName = prefix + Utils.newFileName(file.getOriginalFilename());
 			String path = Configuration.UPLOAD_PATH + newFileName;
-			String url = Configuration.IMG_URL + newFileName;
+			url = Configuration.IMG_URL + newFileName;
 			
 			Timestamp createTime = Utils.long2Timestamp(System.currentTimeMillis());
 			
@@ -84,6 +85,7 @@ public class ResourcesController {
 		}
 		
 		JsonResult jsonResult = new JsonResult(RetCode.SUCCESS);
+		jsonResult.setBody(url);
 		return jsonResult;
 	}
 }

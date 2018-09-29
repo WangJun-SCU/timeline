@@ -259,3 +259,21 @@
 .dis_inb {
 	display: inline-block;
 }
+.w_100 {
+	width: 100px;
+}
+.w_150 {
+	width: 150px;
+}
+.w_200 {
+	width: 200px;
+}
+.w_300 {
+	width: 300px;
+}
+.w_400 {
+	width: 400px;
+}
+.w_500 {
+	width: 500px;
+}
