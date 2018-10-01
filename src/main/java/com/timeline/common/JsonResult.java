@@ -1,43 +1,24 @@
 package com.timeline.common;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@ToString
+@Setter
+@Getter
 public class JsonResult {
 	
 	private int code; // 0：成功，其他：失败
 	private String message;
 	private Object body;
 	
-	public JsonResult() {
-		
-	}
-	
-	public JsonResult(int code, String message) {
+	public JsonResult(RetCode retCode) {
 		super();
-		this.code = code;
-		this.message = message;
+		this.code = retCode.getCode();
+		this.message = retCode.getMessage();
 	}
 
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public Object getBody() {
-		return body;
-	}
-
-	public void setBody(Object body) {
-		this.body = body;
-	}
-	
 }
