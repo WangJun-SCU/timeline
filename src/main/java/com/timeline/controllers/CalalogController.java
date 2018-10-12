@@ -47,6 +47,7 @@ public class CalalogController {
 	public JsonResult queryCatalog() {
 		// log4j2已经配置打印类型和方法名，因此这里只打印一个：Entry。
 		logger.debug("Entry");
+		logger.error("Entry-error");
 		
 		List<CatalogVO> list = catalogService.queryCatalog();
 		JsonResult jsonResult = new JsonResult(RetCode.SUCCESS);
