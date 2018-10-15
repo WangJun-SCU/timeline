@@ -4,7 +4,8 @@ var init = "初始化变量";
 var vm = new Vue({
 	el: '#vue',
 	data: {
-		test:"test"
+		test:"test",
+		carouselIndex: 0
 	},
 	methods: {
 		queryAllCatalog() {
