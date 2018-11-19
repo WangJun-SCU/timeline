@@ -13,19 +13,7 @@
 
 <body>
     <div id="vue">
-        <i-menu class="pl_20" mode="horizontal" theme="dark" active-name="1">
-            <menu-item name="1">
-                <image src="../common/imgs/timeline_white.png" class="head_icon"></image>
-            </menu-item>
-            <menu-item name="2">
-                <Icon type="ios-people"></Icon>
-                用户管理
-            </menu-item>
-            <menu-item name="3">
-                <Icon type="ios-thunderstorm"></Icon>
-                综合设置
-            </menu-item>
-        </i-menu>
+        <tl-header></tl-header>
         <div style="margin: 20px 120px 0px;">
             <div class="title">
                 <h2>时间线详情页面</h2>
@@ -81,12 +69,16 @@
                 </div>
             </div>
         </Drawer>
+        <div id="footer">
+            <Divider orientation="left">footer</Divider>
+        </div>
     </div>
     <script type="text/javascript" src="../common/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../common/js/vue.min.js"></script>
     <script type="text/javascript" src="../common/js/iview.min.js"></script>
     <script type="text/javascript" src="../common/js/host.js"></script>
     <script type="text/javascript" src="../common/js/utils.js"></script>
+    <script type="text/javascript" src="../common/componment/header.js"></script>
     <script type="text/javascript" src="../detail/js/detail.js"></script>
 </body>
 

@@ -25,6 +25,9 @@ public class CalalogController {
 	@Autowired
 	private CatalogService catalogService;
 
+	/*
+	 * 插入目录
+	 */
 	@RequestMapping(value = "/catalogs", method = RequestMethod.POST)
 	@ResponseBody
 	public JsonResult addCatalog(@RequestBody CatalogVO catalog) {
@@ -42,12 +45,14 @@ public class CalalogController {
 		return jsonResult;
 	}
 
+	/*
+	 * 查询所有目录
+	 */
 	@RequestMapping(value = "/catalogs", method = RequestMethod.GET)
 	@ResponseBody
 	public JsonResult queryCatalog() {
 		// log4j2已经配置打印类型和方法名，因此这里只打印一个：Entry。
 		logger.debug("Entry");
-		logger.error("Entry-error");
 		
 		List<CatalogVO> list = catalogService.queryCatalog();
 		JsonResult jsonResult = new JsonResult(RetCode.SUCCESS);
