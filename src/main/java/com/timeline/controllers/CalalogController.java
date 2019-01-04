@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.timeline.common.JsonResult;
 import com.timeline.common.RetCode;
 import com.timeline.services.CatalogService;
+import com.timeline.utils.MQProducer;
 import com.timeline.vo.CatalogVO;
 
 @Controller
@@ -41,7 +42,17 @@ public class CalalogController {
 		JsonResult jsonResult = new JsonResult(RetCode.SUCCESS);
 		catalogService.addCatalog(catalog);
 		jsonResult.setBody("目录插入成功");
-
+		
+		logger.info("测试MQ生产者.");
+		try {
+			MQProducer producer = new MQProducer();
+			producer.syncProducer();
+			producer.asyncProducer();
+			producer.oneWayProducer();
+		}catch(Exception e) {
+			logger.error("生产者发送消息错误！", e);
+		}
+		
 		return jsonResult;
 	}
 
