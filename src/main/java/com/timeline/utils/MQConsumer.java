@@ -35,7 +35,10 @@ public class MQConsumer implements ApplicationListener<ContextRefreshedEvent> {
 
 			@Override
 			public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-				logger.info("消费的消息:" + msgs.toString());
+				logger.info("消费的消息条数:" + msgs.size());
+				for(MessageExt msg: msgs) {
+					logger.info("消费的消息:" + msg.toString());
+				}
 				return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
 			}
 		});

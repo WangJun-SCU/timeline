@@ -55,7 +55,7 @@ public class MQProducer {
 
 		for (int i = 0; i < 5; i++) {
 			final int index = i;
-			Message msg = new Message("TopicTest", "TagA", "OrderID188", "Hello world".getBytes(RemotingHelper.DEFAULT_CHARSET));
+			Message msg = new Message("TopicTest", "TagA", "OrderID188", ("Hello world" + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
 			producer.send(msg, new SendCallback() {
 				@Override
 				public void onSuccess(SendResult sendResult) {
