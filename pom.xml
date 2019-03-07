@@ -106,7 +106,14 @@
         	<groupId>org.apache.rocketmq</groupId>
         	<artifactId>rocketmq-client</artifactId>
         <version>4.3.0</version>
-    </dependency>
+    	</dependency>
+    	<!-- zookeeper客户端  -->
+		<dependency>
+		    <groupId>org.apache.zookeeper</groupId>
+		    <artifactId>zookeeper</artifactId>
+		    <version>3.4.13</version>
+		    <type>pom</type>
+		</dependency>
 	</dependencies>
 	
 	<properties>
